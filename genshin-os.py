@@ -3,9 +3,9 @@ import os
 from settings import log, CONFIG
 from sign import Sign
 from notify import Notify
-from dotenv import load_dotenv
 
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 import random
 import time
