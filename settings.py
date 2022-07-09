@@ -72,14 +72,13 @@ if os.environ.get('USER_AGENT'):
     CONFIG.WB_USER_AGENT = os.environ.get('USER_AGENT')
 
 MESSAGE_TEMPLATE = '''
-    {today:#^28}
+    {today} (Streak: {total_sign_day} {unit})
     
     {nick_name} — AR{level}
     [{region_name}] {uid}
-    Today's rewards: {award_name} × {award_cnt}
-    Monthly Check-In count: {total_sign_day} days
-    Check-in result: {status}
-    
-    {end:#^28}'''
+    Reward: {award_name} × {award_cnt}
+    Result: {status}
+    {end}'''
+# NOTE: The original uses {today:#^28} {end:#^28}
 
 CONFIG.MESSAGE_TEMPLATE = MESSAGE_TEMPLATE

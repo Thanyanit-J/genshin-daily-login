@@ -111,11 +111,12 @@ class Sign(Base):
         if info_list:
             today = info_list.get('data',{}).get('today')
             total_sign_day = info_list.get('data',{}).get('total_sign_day')
+            unit = "day" if total_sign_day == 1 else "days"
             awards = Roles(self._cookie).get_awards().get('data',{}).get('awards')
             uid = str(self._uid).replace(
                 str(self._uid)[1:7], ' ▓ ▓ ▓ ▓ ▓ ▓ ▓ ', 1)
 
-            time.sleep(10)
+            time.sleep(2)
             message = {
                 'today': today,
                 'region_name': self._region_name,
@@ -123,6 +124,7 @@ class Sign(Base):
                 'level': self._level,
                 'nick_name': self._nick_name,
                 'total_sign_day': total_sign_day,
+                'unit': unit,
                 'end': '',
             }
             

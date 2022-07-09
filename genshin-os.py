@@ -3,9 +3,9 @@ import os
 from settings import log, CONFIG
 from sign import Sign
 from notify import Notify
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 import random
 import time
@@ -46,7 +46,8 @@ if __name__ == '__main__':
         try:
             #ltoken = cookie_list[i].split('ltoken=')[1].split(';')[0]
             token = cookie_list[i].split('cookie_token=')[1].split(';')[0]
-            msg = f'	NO.{i + 1} Account:{Sign(cookie_list[i]).run()}'
+            # msg = f'	NO.{i + 1} Account:{Sign(cookie_list[i]).run()}'
+            msg = f'    {Sign(cookie_list[i]).run()}'
             msg_list.append(msg)
             success_num = success_num + 1
         except IndexError:
@@ -69,7 +70,7 @@ if __name__ == '__main__':
             log.error(msg)
             ret = -1
         continue
-    notify.send(status=f'\n  -Number of successful sign-ins: {success_num} \n  -Number of failed sign-ins: {fail_num}', msg=msg_list)
+    notify.send(status=f'' if fail_num == 0 else f'Fail: {fail_num}', msg=msg_list)
     if ret != 0:
         log.error('program terminated with errors')
         exit(ret)

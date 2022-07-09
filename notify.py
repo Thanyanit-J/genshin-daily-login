@@ -111,7 +111,7 @@ class Notify(object):
             log.error(f'Discord FAILED\n{response}')
         return True
 
-    def send(self, app='Genshin Daily Sign-In', status='', msg='', **kwargs):
+    def send(self, app='', status='', msg='', **kwargs):
         hide = kwargs.get('hide', '')
         if isinstance(msg, list) or isinstance(msg, dict):
             # msg = self.to_json(msg)
