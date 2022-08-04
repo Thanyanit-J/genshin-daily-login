@@ -111,7 +111,7 @@ class Sign(Base):
         if info_list:
             today = info_list.get('data',{}).get('today')
             total_sign_day = info_list.get('data',{}).get('total_sign_day')
-            unit = "day" if total_sign_day == 1 else "days"
+            unit = "day" if total_sign_day == 0 else "days"
             awards = Roles(self._cookie).get_awards().get('data',{}).get('awards')
             uid = str(self._uid).replace(
                 str(self._uid)[1:7], ' ▓ ▓ ▓ ▓ ▓ ▓ ▓ ', 1)
