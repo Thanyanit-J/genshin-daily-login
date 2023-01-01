@@ -4,8 +4,10 @@ from settings import log, CONFIG
 from sign import Sign
 from notify import Notify
 
-# from dotenv import load_dotenv
-# load_dotenv()
+### Uncomment these two lines when running on local and run following cmd to install dotenv:
+### pip install python-dotenv
+from dotenv import load_dotenv
+load_dotenv()
 
 import random
 import time
@@ -44,16 +46,14 @@ if __name__ == '__main__':
     for i in range(len(cookie_list)):
         log.info(f'Preparing NO.{i + 1} Account Check-In...')
         try:
-            #ltoken = cookie_list[i].split('ltoken=')[1].split(';')[0]
             token = cookie_list[i].split('cookie_token=')[1].split(';')[0]
-            # msg = f'	NO.{i + 1} Account:{Sign(cookie_list[i]).run()}'
             msg = f'    {Sign(cookie_list[i]).run()}'
             msg_list.append(msg)
             success_num = success_num + 1
         except IndexError:
             cookie_values = ["account_id","ltoken","ltuid","mi18nLang","_MHYUUID"]
             for j in cookie_values:
-                if not(j in cookie_list[i]):
+                if j not in cookie_list[i]:
                     log.error(f'{j} not found')
             fail_num = fail_num + 1
             ret = -1
@@ -69,7 +69,6 @@ if __name__ == '__main__':
             fail_num = fail_num + 1
             log.error(msg)
             ret = -1
-        continue
     notify.send(status=f'' if fail_num == 0 else f'Fail: {fail_num}', msg=msg_list)
     if ret != 0:
         log.error('program terminated with errors')
