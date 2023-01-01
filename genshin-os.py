@@ -6,8 +6,8 @@ from notify import Notify
 
 ### Uncomment these two lines when running on local and run following cmd to install dotenv:
 ### pip install python-dotenv
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 import random
 import time
