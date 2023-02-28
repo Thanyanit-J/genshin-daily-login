@@ -47,9 +47,9 @@ class HttpRequest(object):
                 s = requests.Session()
                 response = s.request(method, url, params=params,
                     data=data, json=json, headers=headers, **kwargs)
-                print("Request Headers: ", response.request.headers)
-                print("Response Headers: ", response.headers)
-                print("Response Content: ", response.content)
+                # print("Request Headers: ", response.request.headers)
+                # print("Response Headers: ", response.headers)
+                # print("Response Content: ", response.content)
             except HTTPError as e:
                 log.error(f'HTTP error:\n{e}')
                 log.error(f'The NO.{i + 1} request failed, retrying...')

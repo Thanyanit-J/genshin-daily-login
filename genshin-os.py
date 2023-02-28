@@ -5,7 +5,12 @@ from sign import Sign
 from notify import Notify
 
 ### Uncomment these two lines when running on local and run following cmd to install dotenv:
+### virtualenv env
+### source env/bin/activate
+### pip install -r requirements.txt
 ### pip install python-dotenv
+### python3 genshin-os.py
+### deactivate
 # from dotenv import load_dotenv
 # load_dotenv()
 
